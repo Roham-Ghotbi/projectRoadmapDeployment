@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+{% extends "base.html" %}
+  <body>  
+    {% block content %}
+    <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a id="title" class="brand-logo left" >I'm working on ...</a>
+        <ul id="nav" class="left">
+          <li id="delete" class="light" ></li>
+        </ul>
+        <ul id="nav" class="right">
+            <li id="date" class="light"></li> 
+            <!-- replace with user initials icon -->
+            <li id="icon"><a class="tooltipped" data-position="left" data-tooltip="Logout" href="{{url_for('logout')}}"> {{session['first_name']}}</a></li>
+            <li><br></li>
+        </ul>
+      </div>
+    </nav> 
+  </div>
+  <div id="fade"></div>
+    <div class="row-projects">
+      {% for project in p %}
+        <div class="project">
+          <!-- Project Focus -->
+          <a href="#" 
+            class="project-line pop" 
+            id="percentage"
+            data-toggle="popover" 
+            data-trigger="hover" 
+            data-html="true"
+            data-content="<font color={{ project['color'] }}>This is some text!</font>" 
+'           data-placement="top" 
+            data-color="{{ project['color'] }}"
+            data-project-id="{{ project['project_id'] }}"
+            data-project-date="{{ project['due_date'] }}"
+            data-project-name="{{ project['project_name'] }}"></a>
+          <ul class="slides">
+            {% for action in project['actions']%}
+              {% if action['finished'] == "0"%}
+                <li class="slide action-button pop not_done {{ action['project_id'] }}" data-toggle="popover " 
+                     data-trigger="hover" 
+                     data-action-id="{{ action['action_id'] }}" 
+                     data-color="{{ action['color'] }}"
+                     data-project-name="{{ project['project_name'] }}"
+                     data-content="
+                      {{ action['action_name'] }}
+                      <br>
+                      <a href='#' class='modal-trigger editLink' data-toggle='modal' data-target='editModal' data-action-id='{{ action['action_id'] }}'>Edit</a>
+                      <a href='{{ url_for('remove_action', value=action['action_id']) }}''>Delete</a>
+                      ">
+                </li>
+              {% else %} 
+                <li class="slide action-button pop done {{ action['project_id'] }}" data-toggle="popover" 
+                     data-trigger="hover" 
+                     data-action-id="{{ action['action_id'] }}" 
+                     data-color="{{ action['color'] }}"
+                     data-project-name="{{ project['project_name'] }}"
+                     data-content="
+                      {{ action['action_name'] }}
+                      <br>
+                      <a href='#' class='modal-trigger editLink' data-toggle='modal' data-target='editModal' data-action-id='{{ action['action_id'] }}' >Edit</a>
+                      <a href='{{ url_for('remove_action', value=action['action_id']) }}''>Delete</a>
+                      ">
+                </li>
+              {% endif %} 
+            {% endfor %}
+            <li>
+              <button class="action-button add-button text-white done modal-trigger" 
+                data-toggle="modal" data-trigger="hover" data-target="actionModal" data-content="Add Action" data-project-name="{{ project['project_name'] }}" data-color="{{ project['color'] }}">+</button>
+
+          </ul>
+          
+        </div>
+      {% endfor %}
+    </div>
+
+
+    <div class="fixed-action-btn" id = "create_project">
+      <button  class="btn-floating btn-large red accent-2 tooltipped modal-trigger" 
+      data-toggle="modal" data-target="projectModal" data-position="left" data-tooltip="Create Project"><i class="large material-icons">create</i></button>
+    </div>
+
+    <!-- Create Project Modal Structure -->
+    <div class="modal " id="projectModal">
+      <div class="modal-content">
+        <h4>Create a Project</h4>
+        <form method="post" action='{{ url_for("create_project") }}' name="ProjectForm">
+        {{ projectForm.hidden_tag() }}
+          <div>
+            {{projectForm.project_name(size=120)}}
+          </div>
+          <div>
+            {{projectForm.description(size=120)}}
+          </div>
+          <div>
+            {{projectForm.due_date(size=120)}}
+          </div>
+          <div>
+            {{projectForm.color}}
+          </div>
+        <p><input class="btn btn-primary" type="submit" value="Create Project"></p>
+      </form>
+      </div>
+    </div>
+
+
+    <!-- Create Action Modal Structure -->
+    <div class="modal" id="actionModal" >
+      <div class="modal-content">
+        <h4>Add Action</h4>
+        <form method="post" action="{{ url_for('create_action' ) }}" name="ActionForm">
+        {{ actionForm.hidden_tag() }}
+        <div>
+          {{actionForm.action_name(size=120)}}
+        </div>
+        <div>
+          {{actionForm.description(size=120)}}
+        </div>
+        <div>
+          {{actionForm.due_date(size=120)}}
+        </div>
+        <input style="display:none;" class="hidden_input" id="project_name" name="project_name" value="" />
+        <p><input class="btn btn-primary" type="submit" value="Add Action"></p>
+      </form>
+      </div>
+    </div>
+
+    <!-- Edit Action Modal Structure -->
+    <div class="modal" id="editModal" >
+      <div class="modal-content">
+        <form class="editform" action= "" method="post" name="EditForm">
+        <h4>Edit Action</h4>
+        {{ editForm.hidden_tag() }}
+        <div>
+          {{editForm.action_name(size=120)}}
+        </div>
+        <div>
+          {{editForm.description(size=120)}}
+        </div>
+        <div>
+          {{editForm.due_date(size=120)}}
+        </div>
+        <input style="display:none;" class="hidden_input_action_id" id="action_id" name="action_id" value="" />
+        <p><input class="btn btn-primary" type="submit" value="Submit Changes"></p>
+      </form>
+      </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+  {% endblock %}
+  </body>
+
+</html>

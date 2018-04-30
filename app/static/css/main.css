@@ -1,0 +1,229 @@
+:root {
+  --red: #EF6B68;
+  --blue: #5A8CDF;
+  --green: #7CB342;
+  --yellow: #FAC95B;
+  --purple: #A172ED;
+  --cyan: #8ECEC3;
+  /*--orange: #00b;*/
+}
+
+.red.accent-2 {
+    background-color: var(--red) !important;
+}
+
+.modal {
+  box-shadow: unset !important;
+  background-color: unset !important;
+  max-height: 45% !important;
+}
+
+/*Navbar*/
+nav {
+    background-color: white;
+}
+
+nav .brand-logo {
+  padding-left: 20px;
+  color: black !important;
+}
+
+nav li {
+  color: #5A8CDF;
+}
+.light {
+  font-family: 'FuturaLight', sans-serif;
+  padding: 3px;
+}
+nav ul a {
+  color: #5A8CDF;
+}
+
+/*Colors*/
+
+.bg_blue {
+  background: var(--blue);
+}
+.bg_red {
+  background: var(--red);
+}
+.bg_green {
+  background: var(--green);
+}
+.bg_yellow {
+  background: var(--yellow);
+}
+.bg_purple {
+  background: var(--purple);
+}
+.bg_cyan {
+  background: var(--cyan);
+}
+.border_blue{
+ border: 4px var(--blue) solid;
+}
+.border_red{
+  border: 4px var(--red) solid;
+}
+.border_green{
+    border: 4px var(--green) solid;
+}
+.border_yellow{
+  border: 4px var(--yellow) solid;
+}
+.border_purple{
+    border: 4px var(--purple) solid;
+}
+.border_cyan{
+    border: 4px var(--cyan) solid;
+}
+/*apply only to action buttons*/
+/*.popover .arrow {
+    display: none;
+}*/
+.blue_shadow {
+    box-shadow: 0 0 20px var(--blue) !important;
+}
+.red_shadow {
+    box-shadow: 0 0 20px var(--red) !important;
+}
+.green_shadow {
+    box-shadow: 0 0 20px var(--green) !important;
+}
+.yellow_shadow {
+    box-shadow: 0 0 20px var(--yellow) !important;
+}
+.purple_shadow {
+    box-shadow: 0 0 20px var(--purple) !important;
+}
+.cyan_shadow {
+    box-shadow: 0 0 20px var(--cyan) !important;
+}
+
+.grey_shadow {
+    box-shadow: 0 0 20px rgba(33,33,33,.2) !important;
+}
+
+.biggen{
+  transform: scale(1.1);
+}
+
+#fade {
+  background: white;
+  position: absolute;
+  opacity: 0;
+  height: 500%;
+  width: 100%;
+  z-index: -1;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+/*a.material-tooltip {
+  top: 734px !important;
+}
+
+i.material-tooltip {
+  top: 0px !important;
+}*/
+.popover-header {
+  background: blue;
+}
+.popover{
+    z-index: 996 !important;
+}
+
+/* Timeline */
+.project-line {
+  position: relative;
+  z-index: 1;
+  left: 29px;
+  width:4px;
+  top: -40px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+
+.action-button {
+  position: relative;
+  z-index: 3;
+  height: 35px;
+  width: 35px;
+  margin: 0px 10px 40px 10px;
+  /*padding: 5px 5px; */
+  border-radius: 50%;
+  outline: 0 !important;
+  overflow:hidden;
+  cursor: pointer;
+  display: block;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.add-button {
+    width: 25px !important;
+    height: 25px !important;
+    padding-left: 2px !important;
+    margin-left: 14px !important;
+    padding-top: 0px !important;
+    border-top-width: 1px !important;
+}
+
+.not_done{
+  background: white;
+}
+
+/* Text Styles */
+p {
+  font-size: 0.5em;
+}
+
+h2 {
+  text-align : center;
+}
+
+h6 {
+  color: red;  
+}
+
+/* Grid */
+
+
+.project {
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+
+}
+
+/*.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}*/
+@media screen and (min-width: 500px) {
+  .row-projects {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    left: 10%;
+    width: 80%;
+    top: 15%;
+}
+
+/* Style */
+
+body {
+  font-family: 'Futura', sans-serif;
+  font-size: 1.3em;
+  background-color: white;
+  margin-bottom: 70px;
+}
+
+.project {
+  padding: 15px;
+  /*border: 1px solid #666;*/
+  margin: 5px 0;
+  position: relative;
+  /*background: #7fa7e8;*/
+}
+

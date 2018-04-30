@@ -1,0 +1,52 @@
+clean up html and do some VERY basic styling
+figure out if doing everything in one page with shifting focus is possible
+improve routing
+clean up models
+figure out how to do everything via popup menus
+enable order by date of actions
+enable dragging of actions
+error checking of user actions everywhere via popup menus
+check clickable regions and add buttons
+do security(passswords fixed) and google sign up(for this wI thinkg we need to at least have our website url set)
+styling forever
+
+what happens when someone goes straight to /timeline without logging in? we need to handle gracefully and elegantly everywhere
+
+
+Horizontal Collapse: Click project bar to expand project view 
+Fix project rows to width, center flex box (maybe we don't need flex box)
+
+
+EXPANDING SPANS
+	project focus
+	action focus
+
+POPOVERS
+	hover to display more content
+	click to edit action
+
+models.py
+	ability to add empty fields
+	add edit/update functionality
+
+FORM SUBMISSION POPOVERS
+	add action
+
+Separate 
+	create project
+
+
+SPACING
+	uuuuuuuuhhh how to figure out dynamic spacing
+
+MOVE CSS TO BULMA (OR SOME OTHER FRAMEWORK FOR STYLING AFTER ALL FRONTEND FUNCTIONALITY COMPLETE)
+	(maybe learn SASS)
+
+STILL UNADDRESSED
+	how to store action completed/not_completed
+	how to order actions w/o dates
+		how to animate reordering actions
+	different colors for different timelines
+	how to show/hide all tool tips when timeline is clicked
+	accelerated project creation page
+	
